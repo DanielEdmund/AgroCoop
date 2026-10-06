@@ -1,0 +1,108 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 60 10% 98%; /* Warm Sand #FAFAF9 */
+    --foreground: 30 6% 25%; /* Deep Earth #44403C */
+
+    --card: 0 0% 100%;
+    --card-foreground: 30 6% 25%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 30 6% 25%;
+
+    --primary: 122 46% 33%; /* Field Green #2E7D32 */
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 60 9% 96%; /* Warm Sand #F5F5F4 */
+    --secondary-foreground: 30 6% 25%;
+
+    --muted: 40 6% 94%;
+    --muted-foreground: 30 5% 45%;
+
+    --accent: 100 40% 93%; /* Pale Sage */
+    --accent-foreground: 122 46% 25%;
+
+    --destructive: 8 72% 45%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 30 8% 90%;
+    --input: 30 8% 90%;
+    --ring: 122 46% 33%;
+
+    --radius: 0.75rem;
+
+    /* Brand hex tokens */
+    --coop-blue: #2e7d32;
+    --coop-gold: #78716c;
+    --coop-green: #059669;
+    --coop-sand: #f5f5f4;
+    --coop-earth: #44403c;
+    --coop-coral: #57534e;
+    --coop-sky: #e6f0e2;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "cv11", "ss01";
+    text-rendering: optimizeLegibility;
+  }
+}
+
+@layer components {
+  .coop-container {
+    @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+
+  .coop-section {
+    @apply py-16 sm:py-20 lg:py-24;
+  }
+
+  .coop-eyebrow {
+    @apply inline-flex items-center gap-2 rounded-full border border-coop-blue/15 bg-coop-blue/5 px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-coop-blue;
+  }
+
+  .coop-heading {
+    @apply font-display text-3xl font-semibold leading-tight tracking-tight text-coop-earth sm:text-4xl lg:text-5xl;
+  }
+
+  .coop-subheading {
+    @apply text-base leading-relaxed text-sand-500 sm:text-lg;
+  }
+
+  .coop-gradient-overlay {
+    @apply bg-gradient-to-t from-coop-earth/90 via-coop-earth/45 to-transparent;
+  }
+
+  .coop-text-gradient {
+    @apply bg-gradient-to-r from-coop-blue via-coop-blue to-coop-green bg-clip-text text-transparent;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .mask-fade-b {
+    mask-image: linear-gradient(to bottom, black 65%, transparent 100%);
+  }
+}

@@ -1,0 +1,177 @@
+import type { Vote } from "@/lib/types";
+
+const day = 86400000;
+const now = Date.now();
+const d = (days: number) => new Date(now + days * day).toISOString();
+
+export const votes: Vote[] = [
+  {
+    id: "v1",
+    cooperativeId: "oyo-maize-collective",
+    title: "Purchase a shared 50HP tractor for the dry season",
+    description:
+      "The coop treasury can fund 60% of a 50HP tractor. Members propose a levied contribution of ₦18,000 each over 6 months to cover the balance. The tractor would be booked through the shared resource pool.",
+    category: "equipment",
+    createdBy: "Folasade Ojo",
+    createdAt: d(-6),
+    deadline: d(3),
+    status: "active",
+    yes: 187,
+    no: 54,
+    abstain: 21,
+    eligibleVoters: 274,
+    userVote: "yes",
+  },
+  {
+    id: "v2",
+    cooperativeId: "oyo-maize-collective",
+    title: "Accept the Bodija Feed Mill contract at ₦412,000/tonne",
+    description:
+      "A 600-tonne contract at ₦412,000/tonne for Q1 delivery — 9% above last season's price. Accepting commits 40% of projected harvest to a single buyer.",
+    category: "market",
+    createdBy: "Adebayo Ogundele",
+    createdAt: d(-3),
+    deadline: d(5),
+    status: "active",
+    yes: 221,
+    no: 19,
+    abstain: 9,
+    eligibleVoters: 274,
+  },
+  {
+    id: "v3",
+    cooperativeId: "kebbi-rice-alliance",
+    title: "Raise membership levy for canal re-lining project",
+    description:
+      "Increase the seasonal levy from ₦7,500 to ₦11,000 for two seasons to finish re-lining 18km of irrigation canals before the next dry season.",
+    category: "project",
+    createdBy: "Alhaji Musa Danjuma",
+    createdAt: d(-8),
+    deadline: d(2),
+    status: "active",
+    yes: 402,
+    no: 108,
+    abstain: 33,
+    eligibleVoters: 586,
+  },
+  {
+    id: "v4",
+    cooperativeId: "niger-delta-cassava",
+    title: "Admit 45 new members from Ughelli LGA",
+    description:
+      "A proposal to open membership to 45 applicants from Ughelli LGA. Processing capacity and the seed bank have room; new members would undergo a 3-month induction.",
+    category: "membership",
+    createdBy: "Ifeoma Nwachukwu",
+    createdAt: d(-2),
+    deadline: d(6),
+    status: "active",
+    yes: 301,
+    no: 44,
+    abstain: 27,
+    eligibleVoters: 412,
+    userVote: undefined,
+  },
+  {
+    id: "v5",
+    cooperativeId: "cross-river-cocoa-unity",
+    title: "Reinvest 30% of premium into a community health fund",
+    description:
+      "Direct 30% of the annual export premium into a member health fund covering primary care for 338 households.",
+    category: "budget",
+    createdBy: "Adaora Etim",
+    createdAt: d(-5),
+    deadline: d(1),
+    status: "active",
+    yes: 244,
+    no: 61,
+    abstain: 33,
+    eligibleVoters: 338,
+  },
+  {
+    id: "v6",
+    cooperativeId: "kaduna-irrigated-union",
+    title: "Switch pump stations from diesel to solar",
+    description:
+      "Approve a ₦9.5M solar pump station financed over 24 months. Projected fuel saving of ₦2.1M per year shared across the union.",
+    category: "project",
+    createdBy: "Amina Balarabe",
+    createdAt: d(-11),
+    deadline: d(4),
+    status: "active",
+    yes: 358,
+    no: 74,
+    abstain: 35,
+    eligibleVoters: 467,
+  },
+  {
+    id: "v7",
+    cooperativeId: "ogun-oil-palm-growers",
+    title: "Open a second collection centre in Ikenne",
+    description:
+      "A new collection centre would cut members' transport distance by an average of 26km and add 15 tonnes/day of receiving capacity.",
+    category: "equipment",
+    createdBy: "Femi Ogunleye",
+    createdAt: d(-4),
+    deadline: d(7),
+    status: "active",
+    yes: 176,
+    no: 142,
+    abstain: 71,
+    eligibleVoters: 389,
+  },
+  {
+    id: "v8",
+    cooperativeId: "benue-vegetable-growers",
+    title: "Hire a refrigerated truck for the peak tomato season",
+    description:
+      "Hiring a 15-tonne reefer truck for 8 weeks at ₦2.9M — funded from the logistics reserve, no member levy required.",
+    category: "budget",
+    createdBy: "Doosuur Tyav",
+    createdAt: d(-9),
+    deadline: d(0),
+    status: "active",
+    yes: 149,
+    no: 31,
+    abstain: 16,
+    eligibleVoters: 196,
+  },
+];
+
+export const closedVotes: Vote[] = [
+  {
+    id: "v9",
+    cooperativeId: "oyo-maize-collective",
+    title: "Adopt by-law requiring quarterly open accounts",
+    description: "All coop accounts to be published to members every quarter.",
+    category: "budget",
+    createdBy: "Tunde Balogun",
+    createdAt: d(-40),
+    deadline: d(-26),
+    status: "closed",
+    yes: 241,
+    no: 22,
+    abstain: 11,
+    eligibleVoters: 274,
+    userVote: "yes",
+  },
+  {
+    id: "v10",
+    cooperativeId: "kebbi-rice-alliance",
+    title: "Join the National Rice Farmers Association delegation",
+    description: "Send 3 elected delegates to the national price negotiation forum.",
+    category: "market",
+    createdBy: "Hauwa Abubakar",
+    createdAt: d(-60),
+    deadline: d(-45),
+    status: "closed",
+    yes: 488,
+    no: 61,
+    abstain: 37,
+    eligibleVoters: 586,
+  },
+];
+
+export const activeVotes = votes;
+export const getVote = (id: string) => [...votes, ...closedVotes].find((v) => v.id === id);
+export const votesOfCoop = (cooperativeId: string) =>
+  votes.filter((v) => v.cooperativeId === cooperativeId);
